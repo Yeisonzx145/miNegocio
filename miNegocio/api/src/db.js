@@ -1,6 +1,11 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
+//********************* importacioon de modelos *************************//
+
+const productFunction = require('./models/Product')
+const userFunction = require('./models/User')
+
 const { DB_USER, DB_PASSWORD, DB_HOST, DB, DB_PORT } = process.env;
 
 const sequelize = new Sequelize(
@@ -11,9 +16,13 @@ const sequelize = new Sequelize(
     }
   );
 
-  const {} = sequelize.models;
 
-  module.exports = {
-    sequelize,
-    ...sequelize.models,
-  };
+productFunction(sequelize)
+userFunction(sequelize)
+
+const {Product,User} = sequelize.models;
+
+module.exports = {
+  sequelize,
+  ...sequelize.models,
+};
