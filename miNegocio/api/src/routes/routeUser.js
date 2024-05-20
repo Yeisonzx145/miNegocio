@@ -3,6 +3,6 @@ const userPostHandler = require('../handlers/user/userPostHandler')
 
 const routeUser = Router()
 
-routeUser.post('/created',userPostHandler)
+routeUser.post("/created",userPostHandler)
 
 module.exports = routeUser;

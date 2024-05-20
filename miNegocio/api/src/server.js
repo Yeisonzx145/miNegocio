@@ -7,7 +7,8 @@ const cors = require('cors')
 const port = process.env.PORT || 3001;
 const routes = require('./routes/routes')
 
-const {sequelize} = require('./db')
+const {sequelize} = require('./db');
+const bodyParser = require("body-parser");
 
 const server = express()
 
@@ -16,6 +17,8 @@ const corsOption = {
 }
 
 server.use(cors(corsOption))
+server.use(bodyParser.json({limit:"10mb",extended:true}));
+server.use(bodyParser.urlencoded({limit:"10mb",extended:false}))
 server.use(morgan('dev'));
 server.use('/',routes);
 
